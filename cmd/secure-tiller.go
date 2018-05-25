@@ -34,7 +34,7 @@ var secureTillerCmd = &cobra.Command{
 		})
 
 		if retryErr != nil {
-			log.Fatalln("Update failed: %v", retryErr)
+			log.Fatalf("Update failed: %v", retryErr)
 		}
 		fmt.Println("Tiller Deployment was updated successfully!")
 	},

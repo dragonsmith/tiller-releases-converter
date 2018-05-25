@@ -7,9 +7,9 @@ It is a tool to automate [Helm](http://helm.sh/)'s [tiller](https://docs.helm.sh
 To upgrade your Helm's Tiller setup to Secrets storage backend with zero-downtime run these three commands in the following order:
 
 ```shell
-tiller-release-convertor convert # Will create a Secret for every ConfigMap release
-tiller-release-convertor secure-tiller # WIll update tiller deployment with "--storate=secret"
-tiller-release-convertor cleanup # Deletes tiller's ConfigMaps
+tiller-releases-convertor convert # Will create a Secret for every ConfigMap release
+tiller-releases-convertor secure-tiller # WIll update tiller deployment with "--storate=secret"
+tiller-releases-convertor cleanup # Deletes tiller's ConfigMaps
 ```
 
 ## Overview
@@ -46,7 +46,7 @@ This tool has four commands:
 Lists current tiller's ConfigMap-based releases.
 
 ```shell
-tiller-release-convertor list
+tiller-releases-convertor list
 ```
 
 Output example:
@@ -63,7 +63,7 @@ kube-state-metrics.v2
 This command creates Secrets out of Tiller's ConfigMaps. ConfigMaps are left untouched.
 
 ```shell
-tiller-release-convertor convert
+tiller-releases-convertor convert
 ```
 
 Output Example:
@@ -81,7 +81,7 @@ See "target already exists" error? It happens when the target Secret already exi
 This command updates `tiller-deploy` deployment and adds `.spec.template.spec.containers[0].command={"/tiller", "--storage=secret"}`
 
 ```shell
-tiller-release-convertor secure-tiller
+tiller-releases-convertor secure-tiller
 ```
 
 Output example:
@@ -96,7 +96,7 @@ Tiller Deployment was updated successfully!
 This command deletes old Tiller ConfigMaps.
 
 ```shell
-tiller-release-convertor cleanup
+tiller-releases-convertor cleanup
 ```
 
 Output example:
