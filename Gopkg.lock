@@ -201,7 +201,7 @@
   version = "v2.2.1"
 
 [[projects]]
-  branch = "master"
+  branch = "release-1.10"
   name = "k8s.io/api"
   packages = [
     "admissionregistration/v1alpha1",
@@ -233,10 +233,10 @@
     "storage/v1alpha1",
     "storage/v1beta1"
   ]
-  revision = "d216743eed4c3242b85d094d2a589f41a793652d"
+  revision = "590a9173e3b65d74e907fcfd94b78465cf314760"
 
 [[projects]]
-  branch = "master"
+  branch = "release-1.10"
   name = "k8s.io/apimachinery"
   packages = [
     "pkg/api/errors",
@@ -275,7 +275,7 @@
     "pkg/watch",
     "third_party/forked/golang/reflect"
   ]
-  revision = "084add7e300b3c88d77dded09a20d5063d632b5b"
+  revision = "31dade610c053669d8054bfd847da657251e8c1a"
 
 [[projects]]
   name = "k8s.io/client-go"
@@ -340,6 +340,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "da847b4948f26f2474a84232d9f6d9a1364f8187cf62dda8d220b95c0c54aaab"
+  inputs-digest = "ce8b3587a9158de71543ba064c75ffdc341b941cab87559b3da250424997644a"
   solver-name = "gps-cdcl"
   solver-version = 1
