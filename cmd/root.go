@@ -72,7 +72,7 @@ func initConfig() {
 // GetConfig returns a Kubernetes client config for a given context.
 func getKubeConfig() (*restclient.Config, error) {
 	rules := &clientcmd.ClientConfigLoadingRules{ExplicitPath: kubeConfig}
-	overrides := &clientcmd.ConfigOverrides{ClusterDefaults: clientcmd.ClusterDefaults}
+	overrides := &clientcmd.ConfigOverrides{}
 
 	if kubeContext != "" {
 		overrides.CurrentContext = kubeContext

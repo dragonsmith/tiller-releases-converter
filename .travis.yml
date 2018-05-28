@@ -15,6 +15,7 @@ script:
 - file tiller-releases-convertor.darwin.amd64
 - GOOS=windows go build -o tiller-releases-convertor.windows.amd64.exe
 - file tiller-releases-convertor.windows.amd64.exe
+- sha256sum tiller-releases-convertor.* > SHA256SUM
 deploy:
   provider: releases
   api_key:
@@ -24,6 +25,7 @@ deploy:
     - tiller-releases-convertor.linux.amd64
     - tiller-releases-convertor.darwin.amd64
     - tiller-releases-convertor.windows.amd64.exe
+    - SHA256SUM
   on:
     repo: dragonsmith/tiller-releases-converter
     tags: true
