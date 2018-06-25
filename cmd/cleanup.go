@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	_ "k8s.io/client-go/plugin/pkg/client/auth/gcp"
@@ -23,11 +24,11 @@ var cleanupCmd = &cobra.Command{
 		for _, item := range tillerConfigMaps {
 			fmt.Printf("Deleting %s: ", item.ObjectMeta.Name)
 			if err = clientset.CoreV1().ConfigMaps(nameSpace).Delete(item.ObjectMeta.Name, &metav1.DeleteOptions{}); err != nil {
-				fmt.Println("❌")
+				color.Red("FAIL")
 				log.Fatalln(err)
 			}
 
-			fmt.Println("✅")
+			color.Green("OK")
 		}
 	},
 }

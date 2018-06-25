@@ -1,4 +1,4 @@
-# tiller-releases-convertor
+# tiller-releases-converter
 
 It is a tool to automate [Helm](http://helm.sh/)'s [tiller](https://docs.helm.sh/glossary/#tiller) migration from ConfigMap releases backend to Secrets-based backend for Kubernetes & Helm users.
 
@@ -7,9 +7,9 @@ It is a tool to automate [Helm](http://helm.sh/)'s [tiller](https://docs.helm.sh
 To upgrade your Helm's Tiller setup to Secrets storage backend with zero-downtime run these three commands in the following order:
 
 ```shell
-tiller-releases-convertor convert # Will create a Secret for every ConfigMap release
-tiller-releases-convertor secure-tiller # Will update tiller deployment with "--storate=secret"
-tiller-releases-convertor cleanup # Deletes tiller's ConfigMaps
+tiller-releases-converter convert # Will create a Secret for every ConfigMap release
+tiller-releases-converter secure-tiller # Will update tiller deployment with "--storate=secret"
+tiller-releases-converter cleanup # Deletes tiller's ConfigMaps
 ```
 
 ## Overview
@@ -48,9 +48,9 @@ This tool has four commands:
 The normal way to use it looks like that:
 
 ```shell
-tiller-releases-convertor convert # Will create a Secret for every ConfigMap release
-tiller-releases-convertor secure-tiller # Will update tiller deployment with "--storate=secret"
-tiller-releases-convertor cleanup # Deletes tiller's ConfigMaps
+tiller-releases-converter convert # Will create a Secret for every ConfigMap release
+tiller-releases-converter secure-tiller # Will update tiller deployment with "--storate=secret"
+tiller-releases-converter cleanup # Deletes tiller's ConfigMaps
 ```
 
 ## Supported Kubernetes versions
@@ -74,7 +74,7 @@ go get -u https://github.com/dragonsmith/tiller-releases-converter
 Lists current tiller's ConfigMap-based releases.
 
 ```shell
-tiller-releases-convertor list
+tiller-releases-converter list
 ```
 
 Output example:
@@ -91,7 +91,7 @@ kube-state-metrics.v2
 This command creates Secrets out of Tiller's ConfigMaps. ConfigMaps are left untouched.
 
 ```shell
-tiller-releases-convertor convert
+tiller-releases-converter convert
 ```
 
 Output Example:
@@ -109,7 +109,7 @@ See "target already exists" error? It happens when the target Secret already exi
 This command updates `tiller-deploy` deployment and adds `.spec.template.spec.containers[0].command={"/tiller", "--storage=secret"}`
 
 ```shell
-tiller-releases-convertor secure-tiller
+tiller-releases-converter secure-tiller
 ```
 
 Output example:
@@ -124,7 +124,7 @@ Tiller Deployment was updated successfully!
 This command deletes old Tiller ConfigMaps.
 
 ```shell
-tiller-releases-convertor cleanup
+tiller-releases-converter cleanup
 ```
 
 Output example:
@@ -145,7 +145,7 @@ There are some global command line arguments:
 ```
 Flags:
       --context string      kube config context
-  -h, --help                help for tiller-releases-convertor
+  -h, --help                help for tiller-releases-converter
   -c, --kubeconfig string   config file (default is $HOME/.kube/config)
   -n, --namespace string    tiller namespace (default is kube-system)
 ```
@@ -161,4 +161,4 @@ Flags:
 7. Create a new pull request
 
 ## License
-tiller-releases-convertor is released under the Apache 2.0 license. See [LICENSE](https://github.com/dragonsmith/tiller-releases-converter/blob/master/LICENSE)
+tiller-releases-converter is released under the Apache 2.0 license. See [LICENSE](https://github.com/dragonsmith/tiller-releases-converter/blob/master/LICENSE)

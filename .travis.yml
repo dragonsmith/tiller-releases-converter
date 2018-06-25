@@ -9,22 +9,22 @@ before_script:
 - gometalinter.v2 --install
 script:
 - gometalinter.v2 --disable-all --enable deadcode --severity deadcode:error --enable gofmt --enable ineffassign --enable misspell --enable vet --tests --vendor --deadline 60s ./...
-- GOOS=linux go build -o tiller-releases-convertor.linux.amd64
-- file tiller-releases-convertor.linux.amd64
-- GOOS=darwin go build -o tiller-releases-convertor.darwin.amd64
-- file tiller-releases-convertor.darwin.amd64
-- GOOS=windows go build -o tiller-releases-convertor.windows.amd64.exe
-- file tiller-releases-convertor.windows.amd64.exe
-- sha256sum tiller-releases-convertor.* > SHA256SUM
+- GOOS=linux go build -o tiller-releases-converter.linux.amd64
+- file tiller-releases-converter.linux.amd64
+- GOOS=darwin go build -o tiller-releases-converter.darwin.amd64
+- file tiller-releases-converter.darwin.amd64
+- GOOS=windows go build -o tiller-releases-converter.windows.amd64.exe
+- file tiller-releases-converter.windows.amd64.exe
+- sha256sum tiller-releases-converter.* > SHA256SUM
 deploy:
   provider: releases
   api_key:
     secure: PLRwEEtqVO4lnMCa3kIKFO5eLsxxq8xFopLv7f0jLRU13HdgKnesYrlqEi+Z6qInG+i/0AhoJdo4GftlnsMwEPp6iTwkxfp2ZAX7Kjli70nZAuCCERfU+KjqzEpFSYKRds0mOueeuyTYvAimHyXJbCtZsNmUoC7snmz4q4wzfpHxHxmnBAQAoA88Mzjd0+LVBzT2oYZKayEe+jZNXeOJmsgxYvTkvFaHiFChF89aHeuj/fVAohKd2pzIjrhFfO8GIkR+8Q65dGSpV/NSuV8tae64QB+WRnU3NeJTuoX2BsPtQC4Auz+vC9pVvU3ysmcI81j8DOuYsOA6rMIuNXNZ4ypEMbCQxtC+db5sZqiciRTh8yoW5RgNf7NwwJ9s2GkVJdi+CLHdwTVlct1NnwBPkKlyBs5laoNViB2G8ij6hDWQ8FARmUmJ45hfDf4ETEIumwljsettd+Q9YtanSREA/8whZQqmElxcietCkeoVuxXihpWxkA+cv4ql1XMXMMm0ArE50OPb3fR7i5qPfSvHkmZz2ceoO3LkYezO2yckFHBuk+1u9ggUMRgflSy1yeNZzsjQlXpaIDAjk5j44JiIr7vUtfe1opcVu/kMKFer1rNyellYrpKGHQ/jO9JHKh0hWTLyZEFizrZYsOItWalmjtjqWaVv1wnfyV+YHZm935s=
   skip_cleanup: true
   file:
-    - tiller-releases-convertor.linux.amd64
-    - tiller-releases-convertor.darwin.amd64
-    - tiller-releases-convertor.windows.amd64.exe
+    - tiller-releases-converter.linux.amd64
+    - tiller-releases-converter.darwin.amd64
+    - tiller-releases-converter.windows.amd64.exe
     - SHA256SUM
   on:
     repo: dragonsmith/tiller-releases-converter

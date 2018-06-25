@@ -33,12 +33,12 @@ func init() {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "tiller-releases-convertor ARGS",
-	Short: "A convertor for Tiller's releases from ConfigMaps to Secrets",
-	Long: `A convertor for Tiller's releases from ConfigMaps to Secrets
+	Use:   "tiller-releases-converter ARGS",
+	Short: "A converter for Tiller's releases from ConfigMaps to Secrets",
+	Long: `A converter for Tiller's releases from ConfigMaps to Secrets
 to migrate a default Tiller installation to a more secure one,
 which uses K8s secrets as its backend.`,
-	Version: "0.1.0",
+	Version: "0.1.1",
 }
 
 func Execute() {

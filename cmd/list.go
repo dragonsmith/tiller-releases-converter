@@ -14,7 +14,7 @@ import (
 var listCmd = &cobra.Command{
 	Use:   "list ARGS",
 	Short: "List Tiller ConfigMap releases.",
-	Long: `List (tiller-releseases-convertor list) will list all Tiller's ConfigMaps
+	Long: `List (tiller-releseases-converter list) will list all Tiller's ConfigMaps
 in the designated namespace.`,
 
 	Run: func(cmd *cobra.Command, args []string) {

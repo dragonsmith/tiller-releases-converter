@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 
+	"github.com/fatih/color"
 	"github.com/spf13/cobra"
 	corev1 "k8s.io/api/core/v1"
 	apierrors "k8s.io/apimachinery/pkg/api/errors"
@@ -18,7 +19,7 @@ const (
 var convertCmd = &cobra.Command{
 	Use:   "convert ARGS",
 	Short: "Convert Tiller ConfigMap releases to Secrets.",
-	Long: `Convert (tiller-releseases-convertor convert) will actually create a new Secret
+	Long: `Convert (tiller-releseases-converter convert) will actually create a new Secret
 for each Tiller-owned ConfigMap.`,
 
 	Run: func(cmd *cobra.Command, args []string) {
@@ -28,13 +29,13 @@ for each Tiller-owned ConfigMap.`,
 		}
 
 		for _, item := range tillerConfigMaps {
-			fmt.Printf(" - [　] %s", item.ObjectMeta.Name)
+			fmt.Printf(" - [    ] %s", item.ObjectMeta.Name)
 
 			err := createSecretFromConfigMap(item)
 			if err != nil && apierrors.IsAlreadyExists(err) {
-				fmt.Printf("\r - [🚫] %s (target already exists)\n", item.ObjectMeta.Name)
+				fmt.Printf("\r - [%s] %s (target already exists)\n", color.RedString("FAIL"), item.ObjectMeta.Name)
 			} else {
-				fmt.Printf("\r - [✅] %s\n", item.ObjectMeta.Name)
+				fmt.Printf("\r - [ %s ] %s\n", color.GreenString("OK"), item.ObjectMeta.Name)
 			}
 		}
 	},

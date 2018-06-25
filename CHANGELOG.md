@@ -1,4 +1,9 @@
-# tiller-releases-convertor changelog
+# tiller-releases-converter changelog
+
+## 0.1.1 (Jun 25, 2018)
+
+- (Fix) fixing naming problem "converter" vs "convertor"
+- (Fix) emoji symbols were changed to colorized text for better portability
 
 ## 0.1.0 (May 28, 2018)
 
