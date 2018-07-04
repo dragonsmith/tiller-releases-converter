@@ -12,6 +12,16 @@ tiller-releases-converter secure-tiller # Will update tiller deployment with "--
 tiller-releases-converter cleanup # Deletes tiller's ConfigMaps
 ```
 
+## Installation
+
+It is strongly recommended that you use a released version. You can find current release binaries on the [releases](https://github.com/dragonsmith/tiller-releases-converter/releases) page.
+
+Or you can install a classical way:
+
+```shell
+go get -u https://github.com/dragonsmith/tiller-releases-converter
+```
+
 ## Overview
 
 If you use [Kubernetes](https://kubernetes.io/) container orchestrator, there is a high probability you are already using [Helm](http://helm.sh/) - the most popular "package manager for Kubernetes", which consists of two components: helm client and tiller.
@@ -56,16 +66,6 @@ tiller-releases-converter cleanup # Deletes tiller's ConfigMaps
 ## Supported Kubernetes versions
 
 [kubernetes/client-go version 7.0.0](https://github.com/kubernetes/client-go) is used in this script. See original [Compatibility matrix](https://github.com/kubernetes/client-go#compatibility-matrix).
-
-## Installation
-
-It is strongly recommended that you use a released version. You can find current release binaries on the [releases](https://github.com/dragonsmith/tiller-releases-converter/releases) page.
-
-Or you can install a classical way:
-
-```shell
-go get -u https://github.com/dragonsmith/tiller-releases-converter
-```
 
 ## Commands overview
 
@@ -130,8 +130,8 @@ tiller-releases-converter cleanup
 Output example:
 
 ```
-Deleting: kube-state-metrics.v1 ✅
-Deleting: kube-state-metrics.v2 ❌
+Deleting: kube-state-metrics.v1 [ OK ]
+Deleting: kube-state-metrics.v2 [FAIL]
 <Error message>
 
 ```
