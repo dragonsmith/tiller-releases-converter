@@ -51,7 +51,7 @@ func createSecretFromConfigMap(configMap corev1.ConfigMap) error {
 	}
 
 	// Create a new Secret resource with data from an old ConfigMap
-	_, err := clientset.CoreV1().Secrets(nameSpace).Create(&newSecret)
+	_, err := clientset.CoreV1().Secrets(destinationNameSpace).Create(&newSecret)
 
 	return err
 }

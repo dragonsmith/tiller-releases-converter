@@ -12,15 +12,18 @@ import (
 )
 
 var (
-	kubeContext string
-	kubeConfig  string
-	nameSpace   string
+	kubeContext          string
+	kubeConfig           string
+	nameSpace            string
+	destinationNameSpace string
 
 	clientset *kubernetes.Clientset
 )
 
 func init() {
 	cobra.OnInitialize(initConfig)
+
+	convertCmd.LocalFlags().StringVarP(&destinationNameSpace, "destination-namespace", "d", "", "destination tiller namespace (default is set to namespace flag)")
 
 	rootCmd.PersistentFlags().StringVar(&kubeContext, "context", "", "kube config context")
 	rootCmd.PersistentFlags().StringVarP(&kubeConfig, "kubeconfig", "c", "", "config file (default is $HOME/.kube/config)")
@@ -56,6 +59,10 @@ func initConfig() {
 
 	if nameSpace == "" {
 		nameSpace = "kube-system"
+	}
+
+	if destinationNameSpace == "" {
+		destinationNameSpace = nameSpace
 	}
 
 	config, err := getKubeConfig()
