@@ -41,7 +41,7 @@ var rootCmd = &cobra.Command{
 	Long: `A converter for Tiller's releases from ConfigMaps to Secrets
 to migrate a default Tiller installation to a more secure one,
 which uses K8s secrets as its backend.`,
-	Version: "0.1.1",
+	Version: "0.1.2",
 }
 
 func Execute() {
