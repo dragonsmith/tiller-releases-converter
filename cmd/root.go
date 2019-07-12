@@ -23,11 +23,11 @@ var (
 func init() {
 	cobra.OnInitialize(initConfig)
 
-	convertCmd.LocalFlags().StringVarP(&destinationNameSpace, "destination-namespace", "d", "", "destination tiller namespace (default is set to namespace flag)")
-
 	rootCmd.PersistentFlags().StringVar(&kubeContext, "context", "", "kube config context")
 	rootCmd.PersistentFlags().StringVarP(&kubeConfig, "kubeconfig", "c", "", "config file (default is $HOME/.kube/config)")
 	rootCmd.PersistentFlags().StringVarP(&nameSpace, "namespace", "n", "", "tiller namespace (default is kube-system)")
+
+	convertCmd.Flags().StringVarP(&destinationNameSpace, "destination-namespace", "d", "", "destination tiller namespace (default is set to namespace flag)")
 
 	rootCmd.AddCommand(listCmd)
 	rootCmd.AddCommand(convertCmd)
