@@ -12,9 +12,10 @@ import (
 )
 
 var (
-	kubeContext string
-	kubeConfig  string
-	nameSpace   string
+	kubeContext          string
+	kubeConfig           string
+	nameSpace            string
+	destinationNameSpace string
 
 	clientset *kubernetes.Clientset
 )
@@ -25,6 +26,8 @@ func init() {
 	rootCmd.PersistentFlags().StringVar(&kubeContext, "context", "", "kube config context")
 	rootCmd.PersistentFlags().StringVarP(&kubeConfig, "kubeconfig", "c", "", "config file (default is $HOME/.kube/config)")
 	rootCmd.PersistentFlags().StringVarP(&nameSpace, "namespace", "n", "", "tiller namespace (default is kube-system)")
+
+	convertCmd.Flags().StringVarP(&destinationNameSpace, "destination-namespace", "d", "", "destination tiller namespace (default is set to namespace flag)")
 
 	rootCmd.AddCommand(listCmd)
 	rootCmd.AddCommand(convertCmd)
@@ -38,7 +41,7 @@ var rootCmd = &cobra.Command{
 	Long: `A converter for Tiller's releases from ConfigMaps to Secrets
 to migrate a default Tiller installation to a more secure one,
 which uses K8s secrets as its backend.`,
-	Version: "0.1.1",
+	Version: "0.1.2",
 }
 
 func Execute() {
@@ -56,6 +59,10 @@ func initConfig() {
 
 	if nameSpace == "" {
 		nameSpace = "kube-system"
+	}
+
+	if destinationNameSpace == "" {
+		destinationNameSpace = nameSpace
 	}
 
 	config, err := getKubeConfig()
