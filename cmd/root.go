@@ -28,9 +28,11 @@ func init() {
 	rootCmd.PersistentFlags().StringVarP(&nameSpace, "namespace", "n", "", "tiller namespace (default is kube-system)")
 
 	convertCmd.Flags().StringVarP(&destinationNameSpace, "destination-namespace", "d", "", "destination tiller namespace (default is set to namespace flag)")
+	convertSecretCmd.Flags().StringVarP(&destinationNameSpace, "destination-namespace", "d", "", "destination tiller namespace (default is set to namespace flag)")
 
 	rootCmd.AddCommand(listCmd)
 	rootCmd.AddCommand(convertCmd)
+	rootCmd.AddCommand(convertSecretCmd)
 	rootCmd.AddCommand(cleanupCmd)
 	rootCmd.AddCommand(secureTillerCmd)
 }

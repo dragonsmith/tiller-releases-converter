@@ -42,3 +42,15 @@ func listTillerConfigMaps() ([]corev1.ConfigMap, error) {
 
 	return configMaps.Items, nil
 }
+
+func listTillerSecrets() ([]corev1.Secret, error) {
+	lsel := kblabels.Set{"OWNER": "TILLER"}.AsSelector()
+	opts := metav1.ListOptions{LabelSelector: lsel.String()}
+
+	secrets, err := clientset.CoreV1().Secrets(nameSpace).List(opts)
+	if err != nil {
+		return nil, err
+	}
+
+	return secrets.Items, nil
+}
