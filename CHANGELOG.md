@@ -1,5 +1,13 @@
 # tiller-releases-converter changelog
 
+## 0.1.4 (Feb 14, 2020)
+
+- (New) Vendor libs update: K8s 1.17 libs
+
+## 0.1.3 (Feb 14, 2020)
+
+- (New) option to convert Secrets to ConfigMaps for Helm 2to3 plugin painless usage
+
 ## 0.1.2 (Jul 12, 2019)
 
 - (New) optional flag to set convert namespace destination
