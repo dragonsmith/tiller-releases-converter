@@ -20,7 +20,7 @@ It is strongly recommended that you use a released version. You can find current
 Or you can install a classical way:
 
 ```shell
-go get -u https://github.com/suciuandrei94/tiller-releases-converter
+go get -u https://github.com/dragonsmith/tiller-releases-converter
 ```
 
 ## Overview
