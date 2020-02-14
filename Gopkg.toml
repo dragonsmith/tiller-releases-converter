@@ -24,22 +24,34 @@
 #   go-tests = true
 #   unused-packages = true
 
+required = [
+  "github.com/gogo/protobuf/proto",
+  "github.com/json-iterator/go",
+]
+
+[[constraint]]
+  name = "github.com/gogo/protobuf"
+  version = "v1.3.1"
+
+[[constraint]]
+  name = "github.com/json-iterator/go"
+  version = "v1.1.8"
 
 [[constraint]]
   name = "github.com/spf13/cobra"
-  version = "0.0.3"
+  version = "0.0.5"
 
 [[constraint]]
-  branch = "release-1.10"
+  version = "kubernetes-1.17.3"
   name = "k8s.io/api"
 
 [[constraint]]
-  branch = "release-1.10"
+  version = "kubernetes-1.17.3"
   name = "k8s.io/apimachinery"
 
 [[constraint]]
   name = "k8s.io/client-go"
-  version = "7.0.0"
+  version = "kubernetes-1.17.3"
 
 [prune]
   go-tests = true
