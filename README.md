@@ -8,6 +8,7 @@ To upgrade your Helm's Tiller setup to Secrets storage backend with zero-downtim
 
 ```shell
 tiller-releases-converter convert # Will create a Secret for every ConfigMap release
+tiller-releases-converter convert-secret # Will create a ConfigMap for every Secret release
 tiller-releases-converter secure-tiller # Will update tiller deployment with "--storate=secret"
 tiller-releases-converter cleanup # Deletes tiller's ConfigMaps
 ```
@@ -19,7 +20,7 @@ It is strongly recommended that you use a released version. You can find current
 Or you can install a classical way:
 
 ```shell
-go get -u https://github.com/dragonsmith/tiller-releases-converter
+go get -u https://github.com/suciuandrei94/tiller-releases-converter
 ```
 
 ## Overview
@@ -38,12 +39,6 @@ When you install software using Helm, you provide it with additional Helm Chart 
 
 It's a security flaw, and there is an option to use Secrets as a storage backend for Helm.
 
-If you make a new Tiller installation you can use the following command to enable Secrets storage backend:
-
-```shell
-helm init --service-account tiller --override 'spec.template.spec.containers[0].command'='{/tiller,--storage=secret}'
-```
-
 But what to do if you already have a deafult working installation? Basically, you have one option to export all Tiller's ConfigMaps, convert them to appropriate Secrets, apply the latter and edit Tiller Deployment by hands. This can be a challenge if you have a lot of releases in your cluster.
 
 This one-time script was written to solve that problem for you.
@@ -52,6 +47,7 @@ This tool has four commands:
 
 * [list](#list)
 * [convert](#convert)
+* [convert-secret](#convert-secret)
 * [secure-tiller](#secure-tiller)
 * [cleanup](#cleanup)
 
@@ -59,7 +55,8 @@ The normal way to use it looks like that:
 
 ```shell
 tiller-releases-converter convert # Will create a Secret for every ConfigMap release
-tiller-releases-converter secure-tiller # Will update tiller deployment with "--storate=secret"
+tiller-releases-converter secure-tiller # Will update tiller deployment with "--storage=secret"
+tiller-releases-converter convert-secret # Will create a ConfigMap for every Secret release
 tiller-releases-converter cleanup # Deletes tiller's ConfigMaps
 ```
 
